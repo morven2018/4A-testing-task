@@ -1,6 +1,6 @@
 export default function Warranty() {
   return (
-    <div className="max-w-307 flex flex-col gap-7.5 p-5">
+    <div className="flex flex-col gap-7.5 p-5">
       <div className="border border-[#81FE95] text-[#81FE95] px-7.5 pt-4 pb-4.5 rounded-[30px] text-[28px] w-fit">
         гарантия возврата 30 дней
       </div>

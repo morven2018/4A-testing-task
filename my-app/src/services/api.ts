@@ -1,6 +1,8 @@
+import { Tariff } from "@/types/types";
+
 const CACHED = 60 * 60;
 
-export async function getTariffs() {
+export async function getTariffs(): Promise<Tariff[] | null> {
   try {
     const url = getBaseUrl();
     const apiUrl = `${url}/api/data`;
