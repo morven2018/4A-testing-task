@@ -1,8 +1,8 @@
-import Attention from "@/components/ui/attention";
-import Buy from "@/components/ui/buy";
+import Attention from "@/components/attention";
+import Buy from "@/components/buy";
 import Image from "next/image";
-import Tariffs from "@/components/ui/tariffs";
-import Warranty from "@/components/ui/warranty";
+import Tariffs from "@/components/tariffs";
+import Warranty from "@/components/warranty";
 import tariff_image from "../../public/img.png";
 import { getTariffs } from "@/services/api";
 
