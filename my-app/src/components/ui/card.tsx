@@ -11,28 +11,49 @@ export default function Card({ data, layout }: Readonly<CardProps>) {
 
   const cardClasses =
     layout === "row"
-      ? "flex flex-row rounded-[34px] border border-[#FDB056] h-47.5 items-start pl-3.75 pr-20 pb-6.5 bg-[#313637]"
+      ? "flex flex-row rounded-[34px] border border-[#FDB056] h-47.5 items-start pl-3.75 pr-4.75 bg-[#313637] justify-between gap-1.5"
       : "flex flex-col rounded-[40px] border border-[#484D4E] h-83,75 items-start pb-6.5 px-4.25 bg-[#313637]";
-  const priceClasses = layout === "row" ? "text-[#FDB056]" : "text-white";
-  const paddingTop = layout === "row" ? "pt-7.5" : "pt-8";
+  const priceClasses =
+    layout === "row"
+      ? "text-[#FDB056] font-semibold text-[50px] tracking-wider tracking-wider"
+      : "text-white font-semibold text-[50px]";
+  const paddingTop =
+    layout === "row"
+      ? "flex flex-row pt-7.5 items-center"
+      : "flex flex-col pt-8 items-center pr-4.5";
 
   return (
     <div className={cardClasses}>
       <div className="pl-7.75">
-        <div className="bg-[#FD5656] px-2 py-1.25 rounded-b-lg">
+        <div className="bg-[#FD5656] px-2 py-1.25 rounded-b-lg gilroy tracking-wider text-[22px] font-medium">
           {price < full_price && <div>{sale.toString()}%</div>}
         </div>
       </div>
 
       <div className={paddingTop}>
-        <div>
-          <h3 className="text-[26px] font-medium">{period}</h3>
-          <div className={priceClasses}>{price}</div>
-          <div className="line-through">{full_price}</div>
+        <div
+          className={`flex flex-col max-w-45 ${layout === "row" && "pr-10.5"}`}
+        >
+          <h3 className="text-[26px] font-medium tracking-wider">{period}</h3>
+          <div className="flex flex-col items-end gap-0 leading-none pt-2.5">
+            <div className={priceClasses}>{price}&nbsp;&#8381;</div>
+            <div className="line-through font-normal text-2xl text-[#919191]">
+              {full_price}&nbsp;&#8381;
+            </div>
+          </div>
         </div>
-        <p>{text}</p>
+        <p
+          className={`max-w-82 pl-0.5 text-base font-normal tracking-[.045em] ${
+            layout === "col" && "pt-10 pr-4"
+          }`}
+        >
+          {text}
+        </p>
       </div>
-      <div>{is_best && <span>хит!</span>}</div>
+
+      <div className="text-[#FDB056] pt-2.75 font-medium text-4.5 tracking-wider">
+        {is_best && <span>ХИТ!</span>}
+      </div>
     </div>
   );
 }

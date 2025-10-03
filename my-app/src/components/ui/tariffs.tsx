@@ -11,7 +11,7 @@ export default function Tariffs({ data }: Readonly<TariffsProps>) {
     data.length > 3 ? data.slice(0, 3).reverse() : [...data].reverse();
 
   return (
-    <div className="grid grid-cols-3 gap-3.5 max-w-307">
+    <div className="grid grid-cols-3 gap-3.5 max-w-304">
       {tariff_forever && (
         <div className="col-span-3">
           <Card data={tariff_forever} layout="row" />
