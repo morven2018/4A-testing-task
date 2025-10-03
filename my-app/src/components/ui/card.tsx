@@ -22,7 +22,7 @@ export default function Card({
   const borderColor = isSelected
     ? "border-[#FDB056] border-2"
     : "border-[#484D4E]";
-  const fullCardClasses = `${cardClasses} ${borderColor}`;
+  const fullCardClasses = `${cardClasses} ${borderColor} hover:scale-102 active:scale-98`;
 
   const priceClasses =
     layout === "row"

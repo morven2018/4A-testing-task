@@ -68,7 +68,7 @@ export default function Buy() {
           />
           <div className="py-2">
             <div
-              className={`relative flex-none ${
+              className={`relative flex-none hover:scale-110 active:scale-98 ${
                 showError ? "border-2 border-red-500 rounded" : ""
               }`}
             >
@@ -93,8 +93,8 @@ export default function Buy() {
         type="submit"
         className={`py-5 px-15 rounded-[20px] text-[#191E1F] w-88 tracking-wider text-xl transition-all duration-500 cursor-pointer ${
           selectedTariffPeriod
-            ? "bg-[#FDB056] animate-pulse shadow-lg shadow-[#FDB056]/50"
-            : "bg-[#FDB056]"
+            ? "bg-[#FDB056] hover:bg-[#FFA042] active:bg-[#F59500] animate-pulse shadow-lg shadow-[#FDB056]/50"
+            : "bg-[#FDB056] hover:bg-[#FFA042] active:bg-[#F59500]"
         }`}
       >
         Купить
