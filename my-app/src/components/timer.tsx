@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useTimer } from "@/contexts/timer-context";
 
-const TIMER_DURATION = 2 * 60;
 const FLASHING_TIME = 30;
 
 const StarIcon = ({ color }: { color: string }) => (
@@ -20,24 +20,8 @@ const StarIcon = ({ color }: { color: string }) => (
 );
 
 export default function Timer() {
-  const [timeLeft, setTimeLeft] = useState(TIMER_DURATION);
+  const { timeLeft } = useTimer();
   const [isBlinking, setIsBlinking] = useState(false);
-
-  useEffect(() => {
-    if (timeLeft <= 0) return;
-
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [timeLeft]);
 
   useEffect(() => {
     setIsBlinking(timeLeft <= FLASHING_TIME && timeLeft > 0);
@@ -74,7 +58,7 @@ export default function Timer() {
   const svgColor = getSvgColor();
 
   return (
-    <div className="flex flex-row items-center gap-1.75  tracking-wider">
+    <div className="flex flex-row items-center gap-1.75 tracking-wider">
       <StarIcon color={svgColor} />
       <div className={`text-[40px] font-bold ${getTimerClass()}`}>
         {formatTime(timeLeft)}

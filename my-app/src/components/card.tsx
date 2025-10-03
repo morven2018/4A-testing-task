@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useTimer } from "@/contexts/timer-context";
 import { Tariff } from "@/types/types";
 
 interface CardProps {
@@ -12,17 +14,38 @@ export default function Card({
   isSelected = false,
 }: Readonly<CardProps>) {
   const { period, price, full_price, is_best, text } = data;
+  const { timeLeft } = useTimer();
+  const isTimerFinished = timeLeft === 0;
   const sale = Math.round(100 * (price / full_price - 1));
+  const [showRedBorder, setShowRedBorder] = useState(false);
+
+  useEffect(() => {
+    if (isTimerFinished) {
+      setShowRedBorder(true);
+      const timer = setTimeout(() => {
+        setShowRedBorder(false);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isTimerFinished]);
 
   const cardClasses =
     layout === "row"
-      ? "flex flex-row rounded-[34px] border h-47.5 items-start pl-3.75 pr-4.75 bg-[#313637] justify-between gap-1.5 transition-all duration-300"
-      : "flex flex-col rounded-[40px] border h-83,75 items-start pb-6.5 px-4.25 bg-[#313637] transition-all duration-300 pb-12.5";
+      ? "flex flex-row rounded-[34px] border-2 h-47.5 items-start pl-3.75 pr-4.75 bg-[#313637] justify-between gap-1.5 transition-all duration-300"
+      : "flex flex-col rounded-[40px] border-2 h-83,75 items-start pb-6.5 px-4.25 bg-[#313637] transition-all duration-300 pb-12.5";
 
-  const borderColor = isSelected
-    ? "border-[#FDB056] border-2"
-    : "border-[#484D4E]";
-  const fullCardClasses = `${cardClasses} ${borderColor} hover:scale-102 active:scale-98`;
+  const getBorderColor = () => {
+    if (showRedBorder) {
+      return "border-[#FD5656] animate-borderFlash";
+    }
+    if (isSelected) {
+      return "border-[#FDB056]";
+    }
+    return "border-[#484D4E]";
+  };
+
+  const fullCardClasses = `${cardClasses} ${getBorderColor()} hover:scale-102 active:scale-98`;
 
   const priceClasses =
     layout === "row"
@@ -32,7 +55,7 @@ export default function Card({
   const paddingTop =
     layout === "row"
       ? "flex flex-row pt-7.5 items-center"
-      : "flex flex-col pt-5 items-center pr-4.5";
+      : "flex flex-col pt-5 items-center";
 
   return (
     <div className={fullCardClasses}>
@@ -49,11 +72,16 @@ export default function Card({
           className={`flex flex-col max-w-45 ${layout === "row" && "pr-10.5"}`}
         >
           <h3 className="text-[26px] font-medium tracking-wider">{period}</h3>
-          <div className="flex flex-col items-end gap-0 leading-none pt-2.5">
-            <div className={priceClasses}>{price}&nbsp;&#8381;</div>
-            <div className="line-through font-normal text-2xl text-[#919191]">
-              {full_price}&nbsp;&#8381;
+          <div className="flex flex-col items-end gap-0 leading-none pt-2.5 min-h-[85px]  w-full">
+            <div className={`${priceClasses} animate-priceTransition`}>
+              {isTimerFinished ? full_price : price}&nbsp;&#8381;
             </div>
+
+            {!isTimerFinished && (
+              <div className="line-through font-normal text-2xl text-[#919191] animate-crossfade ">
+                {full_price}&nbsp;&#8381;
+              </div>
+            )}
           </div>
         </div>
         <p
