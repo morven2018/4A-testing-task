@@ -3,31 +3,45 @@ import { Tariff } from "@/types/types";
 interface CardProps {
   data: Tariff;
   layout: "col" | "row";
+  isSelected?: boolean;
 }
 
-export default function Card({ data, layout }: Readonly<CardProps>) {
+export default function Card({
+  data,
+  layout,
+  isSelected = false,
+}: Readonly<CardProps>) {
   const { period, price, full_price, is_best, text } = data;
   const sale = Math.round(100 * (price / full_price - 1));
 
   const cardClasses =
     layout === "row"
-      ? "flex flex-row rounded-[34px] border border-[#FDB056] h-47.5 items-start pl-3.75 pr-4.75 bg-[#313637] justify-between gap-1.5"
-      : "flex flex-col rounded-[40px] border border-[#484D4E] h-83,75 items-start pb-6.5 px-4.25 bg-[#313637]";
+      ? "flex flex-row rounded-[34px] border h-47.5 items-start pl-3.75 pr-4.75 bg-[#313637] justify-between gap-1.5 transition-all duration-300"
+      : "flex flex-col rounded-[40px] border h-83,75 items-start pb-6.5 px-4.25 bg-[#313637] transition-all duration-300 pb-12.5";
+
+  const borderColor = isSelected
+    ? "border-[#FDB056] border-2"
+    : "border-[#484D4E]";
+  const fullCardClasses = `${cardClasses} ${borderColor}`;
+
   const priceClasses =
     layout === "row"
-      ? "text-[#FDB056] font-semibold text-[50px] tracking-wider tracking-wider"
+      ? "text-[#FDB056] font-semibold text-[50px] tracking-wider"
       : "text-white font-semibold text-[50px] pt-4";
+
   const paddingTop =
     layout === "row"
       ? "flex flex-row pt-7.5 items-center"
       : "flex flex-col pt-5 items-center pr-4.5";
 
   return (
-    <div className={cardClasses}>
+    <div className={fullCardClasses}>
       <div className="pl-7.75">
-        <div className="bg-[#FD5656] px-2 py-1.25 rounded-b-lg gilroy tracking-wider text-[22px] font-medium">
-          {price < full_price && <div>{sale.toString()}%</div>}
-        </div>
+        {price < full_price && (
+          <div className="bg-[#FD5656] px-2 py-1.25 rounded-b-lg gilroy tracking-wider text-[22px] font-medium">
+            {sale.toString()}%
+          </div>
+        )}
       </div>
 
       <div className={paddingTop}>
@@ -43,7 +57,7 @@ export default function Card({ data, layout }: Readonly<CardProps>) {
           </div>
         </div>
         <p
-          className={`max-w-82 pl-0.5 text-base font-normal tracking-[.045em] ${
+          className={`max-w-82 h-15.5 pl-0.5 text-base font-normal tracking-[.045em] ${
             layout === "col" && "pt-10 pr-4"
           }`}
         >

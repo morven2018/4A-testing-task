@@ -1,4 +1,6 @@
+"use client";
 import Card from "./card";
+import { useTariff } from "@/contexts/tariff-context";
 import { Tariff } from "@/types/types";
 
 interface TariffsProps {
@@ -6,19 +8,42 @@ interface TariffsProps {
 }
 
 export default function Tariffs({ data }: Readonly<TariffsProps>) {
-  const tariff_forever = data.length > 3 ? data[3] : "";
+  const { selectedTariffPeriod, setSelectedTariffPeriod } = useTariff();
+
+  const tariff_forever = data.length > 3 ? data[3] : null;
   const tariff_data =
     data.length > 3 ? data.slice(0, 3).reverse() : [...data].reverse();
+
+  const handleTariffSelect = (period: string) => {
+    setSelectedTariffPeriod(period);
+  };
 
   return (
     <div className="grid grid-cols-3 gap-3.5 max-w-304">
       {tariff_forever && (
-        <div className="col-span-3">
-          <Card data={tariff_forever} layout="row" />
+        <div
+          className="col-span-3 cursor-pointer"
+          onClick={() => handleTariffSelect(tariff_forever.period)}
+        >
+          <Card
+            data={tariff_forever}
+            layout="row"
+            isSelected={selectedTariffPeriod === tariff_forever.period}
+          />
         </div>
       )}
       {tariff_data.map((item: Tariff) => (
-        <Card key={item.id} data={item} layout="col" />
+        <div
+          key={item.id}
+          className="cursor-pointer"
+          onClick={() => handleTariffSelect(item.period)}
+        >
+          <Card
+            data={item}
+            layout="col"
+            isSelected={selectedTariffPeriod === item.period}
+          />
+        </div>
       ))}
     </div>
   );
