@@ -54,9 +54,12 @@ export default function Buy() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-187 flex flex-col gap-2">
+    <form
+      onSubmit={handleSubmit}
+      className="w-187 max-xl:w-full flex flex-col gap-2 max-xl:px-5"
+    >
       <div>
-        <label className="flex flex-row items-start space-x-3 cursor-pointer max-w-162">
+        <label className="flex flex-row items-start space-x-3 cursor-pointer w-162 max-xl:w-full">
           <input
             type="checkbox"
             checked={isAgreed}
@@ -66,7 +69,7 @@ export default function Buy() {
             }}
             className="hidden"
           />
-          <div className="py-2">
+          <div className="py-2 max-xl:py-0  ">
             <div
               className={`relative flex-none hover:scale-110 active:scale-98 ${
                 showError ? "border-2 border-red-500 rounded" : ""
@@ -91,7 +94,7 @@ export default function Buy() {
 
       <button
         type="submit"
-        className={`py-5 px-15 rounded-[20px] text-[#191E1F] w-88 tracking-wider text-xl transition-all duration-500 cursor-pointer ${
+        className={`py-5 px-15 rounded-[20px] text-[#191E1F] w-88 max-xl:w-full  tracking-wider text-xl transition-all duration-500 cursor-pointer ${
           selectedTariffPeriod
             ? "bg-[#FDB056] hover:bg-[#FFA042] active:bg-[#F59500] animate-pulse shadow-lg shadow-[#FDB056]/50"
             : "bg-[#FDB056] hover:bg-[#FFA042] active:bg-[#F59500]"

@@ -11,18 +11,25 @@ export default async function Home() {
   const data = await getTariffs();
 
   return (
-    <div className="bg-[#232829] rounded-[60px] flex flex-col items-center font-bold box-content">
+    <div className="bg-[#232829] rounded-[60px] flex flex-col items-center font-bold box-content px-4">
       <Header />
-      <div className="max-w-307 pb-37.5 flex flex-col gap-16.5">
+      <div className="max-w-307 pb-37.5 flex flex-col gap-16.5 max-lg:pb-10">
         <h1 className="text-[40px] tracking-wider pb-10">
           Выбери подходящий для себя{" "}
           <span className="text-[#FDB056]">тариф</span>
         </h1>
-        <div className="flex flex-row items-center gap-22">
-          <Image src={tariff_image} height={767} alt="Picture of the author" />
+        <div className="flex flex-row max-xl:flex-col max-xl:items-stretch items-center 2xl:gap-22">
+          <Image
+            src={tariff_image}
+            className="h-[767px] max-xl:h-180 max-md:h-62.5 w-auto object-contain"
+            alt="Picture of the author"
+          />
           <div className="flex flex-col gap-5">
             {data && <Tariffs data={data} />}
-            <Attention />
+            <div className="max-xl:px-5">
+              <Attention />
+            </div>
+
             <Buy />
           </div>
         </div>

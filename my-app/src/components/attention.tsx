@@ -1,6 +1,6 @@
 export default function Attention() {
   return (
-    <div className="flex flex-row gap-4 px-5.5 py-4 rounded-[20px] bg-[#2D3233] max-w-125 justify-items-center">
+    <div className="flex flex-row gap-4 px-5.5 py-4 rounded-[20px] bg-[#2D3233] w-125 max-xl:w-full justify-items-center">
       <svg
         width="18"
         height="20"

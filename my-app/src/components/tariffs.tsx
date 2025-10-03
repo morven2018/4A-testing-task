@@ -19,10 +19,10 @@ export default function Tariffs({ data }: Readonly<TariffsProps>) {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-3.5 max-w-304">
+    <div className="grid grid-cols-3 gap-3.5 max-w-304 max-md:grid-cols-1">
       {tariff_forever && (
         <div
-          className="col-span-3 cursor-pointer"
+          className="col-span-3 cursor-pointer max-md:col-span-1"
           onClick={() => handleTariffSelect(tariff_forever.period)}
         >
           <Card
