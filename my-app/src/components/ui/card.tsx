@@ -16,11 +16,11 @@ export default function Card({ data, layout }: Readonly<CardProps>) {
   const priceClasses =
     layout === "row"
       ? "text-[#FDB056] font-semibold text-[50px] tracking-wider tracking-wider"
-      : "text-white font-semibold text-[50px]";
+      : "text-white font-semibold text-[50px] pt-4";
   const paddingTop =
     layout === "row"
       ? "flex flex-row pt-7.5 items-center"
-      : "flex flex-col pt-8 items-center pr-4.5";
+      : "flex flex-col pt-5 items-center pr-4.5";
 
   return (
     <div className={cardClasses}>

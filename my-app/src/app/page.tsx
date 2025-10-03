@@ -1,3 +1,5 @@
+import Attention from "@/components/ui/attention";
+import Buy from "@/components/ui/buy";
 import Image from "next/image";
 import Tariffs from "@/components/ui/tariffs";
 import Warranty from "@/components/ui/warranty";
@@ -9,14 +11,18 @@ export default async function Home() {
 
   return (
     <div className="bg-[#232829] rounded-[60px] flex flex-col items-center font-bold box-content">
-      <div className="max-w-307 pb-37.5">
-        <h1 className="text-[40px] tracking-wider">
+      <div className="max-w-307 pb-37.5 flex flex-col gap-16.5">
+        <h1 className="text-[40px] tracking-wider pb-10">
           Выбери подходящий для себя{" "}
           <span className="text-[#FDB056]">тариф</span>
         </h1>
         <div className="flex flex-row items-center gap-22">
           <Image src={tariff_image} height={767} alt="Picture of the author" />
-          {data && <Tariffs data={data} />}
+          <div className="flex flex-col gap-5">
+            {data && <Tariffs data={data} />}
+            <Attention />
+            <Buy />
+          </div>
         </div>
         {!data && <div>Error on load data</div>}
         <Warranty />
