@@ -1,5 +1,6 @@
 import Attention from "@/components/attention";
 import Buy from "@/components/buy";
+import Header from "@/components/header";
 import Image from "next/image";
 import Tariffs from "@/components/tariffs";
 import Warranty from "@/components/warranty";
@@ -11,6 +12,7 @@ export default async function Home() {
 
   return (
     <div className="bg-[#232829] rounded-[60px] flex flex-col items-center font-bold box-content">
+      <Header />
       <div className="max-w-307 pb-37.5 flex flex-col gap-16.5">
         <h1 className="text-[40px] tracking-wider pb-10">
           Выбери подходящий для себя{" "}
