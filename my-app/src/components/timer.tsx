@@ -60,7 +60,9 @@ export default function Timer() {
   return (
     <div className="flex flex-row items-center gap-1.75 tracking-wider">
       <StarIcon color={svgColor} />
-      <div className={`text-[40px] font-bold ${getTimerClass()}`}>
+      <div
+        className={`text-[40px] max-md:text-[32px] font-bold ${getTimerClass()}`}
+      >
         {formatTime(timeLeft)}
       </div>
       <StarIcon color={svgColor} />

@@ -56,10 +56,10 @@ export default function Buy() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-187 max-xl:w-full flex flex-col gap-2 max-xl:px-5"
+      className="w-187 max-xl:w-full flex flex-col gap-2 max-xl:px-5 max-md:px-0"
     >
       <div>
-        <label className="flex flex-row items-start space-x-3 cursor-pointer w-162 max-xl:w-full">
+        <label className="flex flex-row items-start space-x-3 cursor-pointer w-162 max-xl:w-full max-md:pb-2.5">
           <input
             type="checkbox"
             checked={isAgreed}
@@ -79,7 +79,7 @@ export default function Buy() {
             </div>
           </div>
 
-          <span className="text-base text-[#CDCDCD] tracking-wide">
+          <span className="text-base text-[#CDCDCD] max-md:text-xs tracking-wide">
             Я согласен с офертой{" "}
             <Link href="#" className="underline">
               рекуррентных платежей
@@ -103,7 +103,7 @@ export default function Buy() {
         Купить
       </button>
 
-      <p className="text-sm text-[#9B9B9B] font-normal leading-[120%] tracking-[.06em] pt-1.5">
+      <p className="text-sm max-md:text-[10px] text-[#9B9B9B] font-normal leading-[120%] tracking-[.06em] pt-1.5">
         Нажимая кнопку «Купить», Пользователь соглашается на разовое списание
         денежных средств для получения пожизненного доступа к приложению.
         Пользователь соглашается, что данные кредитной/дебетовой карты будут

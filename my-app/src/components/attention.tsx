@@ -1,6 +1,6 @@
 export default function Attention() {
   return (
-    <div className="flex flex-row gap-4 px-5.5 py-4 rounded-[20px] bg-[#2D3233] w-125 max-xl:w-full justify-items-center">
+    <div className="flex flex-row gap-4 px-5.5 py-4 max-md:px-3.5 max-md:py-3.5 rounded-[20px] bg-[#2D3233] w-125 max-xl:w-full justify-items-center">
       <svg
         width="18"
         height="20"
@@ -18,7 +18,7 @@ export default function Attention() {
         />
       </svg>
 
-      <div className="tracking-wide">
+      <div className="tracking-wide max-md:text-xs font-base max-md:pr-2">
         Следуя плану на 3 месяца и более, люди получают в 2 раза лучший
         результат, чем за 1 месяц
       </div>

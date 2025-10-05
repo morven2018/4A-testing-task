@@ -19,7 +19,7 @@ export default function Tariffs({ data }: Readonly<TariffsProps>) {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-3.5 max-w-304 max-md:grid-cols-1">
+    <div className="grid grid-cols-3 gap-3.5 max-md:gap-2 max-w-304 max-md:grid-cols-1">
       {tariff_forever && (
         <div
           className="col-span-3 cursor-pointer max-md:col-span-1"
