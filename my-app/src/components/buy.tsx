@@ -56,7 +56,7 @@ export default function Buy() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-187 max-xl:w-full flex flex-col gap-2 max-xl:px-5 max-md:px-0"
+      className="w-187 max-xl:w-full flex flex-col min-[351px]:gap-2 max-xl:px-5 max-md:px-0"
     >
       <div>
         <label className="flex flex-row items-start space-x-3 cursor-pointer w-162 max-xl:w-full max-md:pb-2.5">
@@ -94,7 +94,7 @@ export default function Buy() {
 
       <button
         type="submit"
-        className={`py-5 px-15 rounded-[20px] text-[#191E1F] w-88 max-xl:w-full  tracking-wider text-xl transition-all duration-500 cursor-pointer ${
+        className={`py-4 min-[351px]:py-5 px-15 rounded-[20px] text-[#191E1F] w-88 max-xl:w-full  tracking-wider text-xl transition-all duration-500 cursor-pointer ${
           selectedTariffPeriod
             ? "bg-[#FDB056] hover:bg-[#FFA042] active:bg-[#F59500] animate-pulse shadow-lg shadow-[#FDB056]/50"
             : "bg-[#FDB056] hover:bg-[#FFA042] active:bg-[#F59500]"
